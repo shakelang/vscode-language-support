@@ -1,0 +1,25 @@
+{
+  "name": "shake-language-support",
+  "displayName": "shake-language-support",
+  "description": "Language support for shake programming language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "shake",
+      "aliases": ["shake", "shake"],
+      "extensions": [".shake"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "shake",
+      "scopeName": "file",
+      "path": "./syntaxes/shake.tmLanguage.json"
+    }]
+  }
+}
