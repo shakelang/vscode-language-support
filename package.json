@@ -18,6 +18,20 @@
         "title": "Hello World"
       }
     ],
+    "languages": [
+      {
+        "id": "shake",
+        "aliases": [
+          "Shake",
+          "shake"
+        ],
+        "extensions": [
+          ".shake"
+        ],
+        "filenames": [],
+        "configuration": "./language-configuration.json"
+      }
+    ],
     "grammars": [
       {
         "language": "shake",
@@ -36,11 +50,11 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "build-synthax": "npx js-yaml syntaxes/shake.tmLanguage.yaml > syntaxes/shake.tmLanguage.json"
+    "build-synthax": "node build-synthaxes.js syntaxes/shake.tmLanguage.yaml syntaxes/shake.tmLanguage.json"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
-    "@types/node": "20.x",
+    "@types/node": "^20.14.9",
     "@types/vscode": "^1.90.0",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",

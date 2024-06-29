@@ -1,84 +1,795 @@
 "$schema": https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
 name: shake
 patterns:
-  - include: "#file"
+  - include: "#keyword"
+  - include: "#bracket"
+  - include: "#comment"
+  - include: "#number"
+  - include: "#string"
+  - include: "#operator"
+  - include: "#symbol"
 
 repository:
-  file:
+  # Keywords
+  keyword_abstract:
     patterns:
-      - begin: "\\b(file)\\b"
-        beginCaptures:
-          "1":
-            name: keyword.other.file
-        end: "\\n"
-        endCaptures:
-          "0":
-            name: punctuation.definition.string.end
-        name: meta.file
-        patterns:
-          - include: "#strings"
+      - match: "\\b(abstract)\\b"
+        name: keyword.other.abstract
 
-  file-entry:
-    patterns: []
-  file-start-entry:
+  keyword_actual:
     patterns:
-      - include: "#file-entry"
-      - include: "#import-directive"
-  file-first-entry:
-    patterns:
-      - include: "#file-start-entry"
-      - include: "#package-directive"
-  package-directive:
-    name: keyword.other.package
-    patterns:
-      - begin: "\\b(package)\\b"
-        beginCaptures:
-          "1":
-            name: keyword.other.package
-        end: "\\n|;"
-        endCaptures:
-          "0":
-            name: punctuation.definition.string.end
-        patterns:
-          - include: "#identifier-sub"
+      - match: "\\b(actual)\\b"
+        name: keyword.other.actual
 
-  import-directive:
+  keyword_annotation:
     patterns:
-      - begin: "\\b(import)\\b"
+      - match: "\\b(annotation)\\b"
+        name: keyword.other.annotation
+
+  keyword_as:
+    patterns:
+      - match: "\\b(as)\\b"
+        name: keyword.other.as
+
+  keyword_break:
+    patterns:
+      - match: "\\b(break)\\b"
+        name: keyword.other.break
+
+  keyword_by:
+    patterns:
+      - match: "\\b(by)\\b"
+        name: keyword.other.by
+
+  keyword_catch:
+    patterns:
+      - match: "\\b(catch)\\b"
+        name: keyword.other.catch
+
+  keyword_class:
+    patterns:
+      - match: "\\b(class)\\b"
+        name: keyword.other.class
+
+  keyword_companion:
+    patterns:
+      - match: "\\b(companion)\\b"
+        name: keyword.other.companion
+
+  keyword_const:
+    patterns:
+      - match: "\\b(const)\\b"
+        name: keyword.other.const
+
+  keyword_constructor:
+    patterns:
+      - match: "\\b(constructor)\\b"
+        name: keyword.other.constructor
+
+  keyword_continue:
+    patterns:
+      - match: "\\b(continue)\\b"
+        name: keyword.other.continue
+
+  keyword_crossinline:
+    patterns:
+      - match: "\\b(crossinline)\\b"
+        name: keyword.other.crossinline
+
+  keyword_data:
+    patterns:
+      - match: "\\b(data)\\b"
+        name: keyword.other.data
+
+  keyword_do:
+    patterns:
+      - match: "\\b(do)\\b"
+        name: keyword.other.do
+
+  keyword_dynamic:
+    patterns:
+      - match: "\\b(dynamic)\\b"
+        name: keyword.other.dynamic
+
+  keyword_else:
+    patterns:
+      - match: "\\b(else)\\b"
+        name: keyword.other.else
+
+  keyword_enum:
+    patterns:
+      - match: "\\b(enum)\\b"
+        name: keyword.other.enum
+
+  keyword_expect:
+    patterns:
+      - match: "\\b(expect)\\b"
+        name: keyword.other.expect
+
+  keyword_external:
+    patterns:
+      - match: "\\b(external)\\b"
+        name: keyword.other.external
+
+  keyword_final:
+    patterns:
+      - match: "\\b(final)\\b"
+        name: keyword.other.final
+
+  keyword_static:
+    patterns:
+      - match: "\\b(static)\\b"
+        name: keyword.other.static
+
+  keyword_finally:
+    patterns:
+      - match: "\\b(finally)\\b"
+        name: keyword.other.finally
+
+  keyword_for:
+    patterns:
+      - match: "\\b(for)\\b"
+        name: keyword.other.for
+
+  keyword_fun:
+    patterns:
+      - match: "\\b(fun)\\b"
+        name: keyword.other.fun
+
+  keyword_get:
+    patterns:
+      - match: "\\b(get)\\b"
+        name: keyword.other.get
+
+  keyword_if:
+    patterns:
+      - match: "\\b(if)\\b"
+        name: keyword.other.if
+
+  keyword_import:
+    patterns:
+      - match: "\\b(import)\\b"
+        name: keyword.other.import
+
+  keyword_in:
+    patterns:
+      - match: "\\b(in)\\b"
+        name: keyword.other.in
+
+  keyword_infix:
+    patterns:
+      - match: "\\b(infix)\\b"
+        name: keyword.other.infix
+
+  keyword_init:
+    patterns:
+      - match: "\\b(init)\\b"
+        name: keyword.other.init
+
+  keyword_inline:
+    patterns:
+      - match: "\\b(inline)\\b"
+        name: keyword.other.inline
+
+  keyword_inner:
+    patterns:
+      - match: "\\b(inner)\\b"
+        name: keyword.other.inner
+
+  keyword_interface:
+    patterns:
+      - match: "\\b(interface)\\b"
+        name: keyword.other.interface
+
+  keyword_internal:
+    patterns:
+      - match: "\\b(internal)\\b"
+        name: keyword.other.internal
+
+  keyword_is:
+    patterns:
+      - match: "\\b(is)\\b"
+        name: keyword.other.is
+
+  keyword_lateinit:
+    patterns:
+      - match: "\\b(lateinit)\\b"
+        name: keyword.other.lateinit
+
+  keyword_noinline:
+    patterns:
+      - match: "\\b(noinline)\\b"
+        name: keyword.other.noinline
+
+  keyword_null:
+    patterns:
+      - match: "\\b(null)\\b"
+        name: keyword.other.null
+
+  keyword_object:
+    patterns:
+      - match: "\\b(object)\\b"
+        name: keyword.other.object
+
+  keyword_open:
+    patterns:
+      - match: "\\b(open)\\b"
+        name: keyword.other.open
+
+  keyword_operator:
+    patterns:
+      - match: "\\b(operator)\\b"
+        name: keyword.other.operator
+
+  keyword_out:
+    patterns:
+      - match: "\\b(out)\\b"
+        name: keyword.other.out
+
+  keyword_override:
+    patterns:
+      - match: "\\b(override)\\b"
+        name: keyword.other.override
+
+  keyword_package:
+    patterns:
+      - match: "\\b(package)\\b"
+        name: keyword.other.package
+
+  keyword_private:
+    patterns:
+      - match: "\\b(private)\\b"
+        name: keyword.other.private
+
+  keyword_protected:
+    patterns:
+      - match: "\\b(protected)\\b"
+        name: keyword.other.protected
+
+  keyword_public:
+    patterns:
+      - match: "\\b(public)\\b"
+        name: keyword.other.public
+
+  keyword_reified:
+    patterns:
+      - match: "\\b(reified)\\b"
+        name: keyword.other.reified
+
+  keyword_return:
+    patterns:
+      - match: "\\b(return)\\b"
+        name: keyword.other.return
+
+  keyword_sealed:
+    patterns:
+      - match: "\\b(sealed)\\b"
+        name: keyword.other.sealed
+
+  keyword_set:
+    patterns:
+      - match: "\\b(set)\\b"
+        name: keyword.other.set
+
+  keyword_super:
+    patterns:
+      - match: "\\b(super)\\b"
+        name: keyword.other.super
+
+  keyword_suspend:
+    patterns:
+      - match: "\\b(suspend)\\b"
+        name: keyword.other.suspend
+
+  keyword_tailrec:
+    patterns:
+      - match: "\\b(tailrec)\\b"
+        name: keyword.other.tailrec
+
+  keyword_this:
+    patterns:
+      - match: "\\b(this)\\b"
+        name: keyword.other.this
+
+  keyword_throw:
+    patterns:
+      - match: "\\b(throw)\\b"
+        name: keyword.other.throw
+
+  keyword_to:
+    patterns:
+      - match: "\\b(to)\\b"
+        name: keyword.other.to
+
+  keyword_try:
+    patterns:
+      - match: "\\b(try)\\b"
+        name: keyword.other.try
+
+  keyword_typealias:
+    patterns:
+      - match: "\\b(typealias)\\b"
+        name: keyword.other.typealias
+
+  keyword_val:
+    patterns:
+      - match: "\\b(val)\\b"
+        name: keyword.other.val
+
+  keyword_var:
+    patterns:
+      - match: "\\b(var)\\b"
+        name: keyword.other.var
+
+  keyword_vararg:
+    patterns:
+      - match: "\\b(vararg)\\b"
+        name: keyword.other.vararg
+
+  keyword_when:
+    patterns:
+      - match: "\\b(when)\\b"
+        name: keyword.other.when
+
+  keyword_where:
+    patterns:
+      - match: "\\b(where)\\b"
+        name: keyword.other.where
+
+  keyword_while:
+    patterns:
+      - match: "\\b(while)\\b"
+        name: keyword.other.while
+
+  keyword_byte:
+    patterns:
+      - match: "\\b(byte)\\b"
+        name: keyword.other.byte
+
+  keyword_short:
+    patterns:
+      - match: "\\b(short)\\b"
+        name: keyword.other.short
+
+  keyword_int:
+    patterns:
+      - match: "\\b(int)\\b"
+        name: keyword.other.int
+
+  keyword_long:
+    patterns:
+      - match: "\\b(long)\\b"
+        name: keyword.other.long
+
+  keyword_ubyte:
+    patterns:
+      - match: "\\b(ubyte)\\b"
+        name: keyword.other.ubyte
+
+  keyword_ushort:
+    patterns:
+      - match: "\\b(ushort)\\b"
+        name: keyword.other.ushort
+
+  keyword_uint:
+    patterns:
+      - match: "\\b(uint)\\b"
+        name: keyword.other.uint
+
+  keyword_ulong:
+    patterns:
+      - match: "\\b(ulong)\\b"
+        name: keyword.other.ulong
+
+  keyword_float:
+    patterns:
+      - match: "\\b(float)\\b"
+        name: keyword.other.float
+
+  keyword_double:
+    patterns:
+      - match: "\\b(double)\\b"
+        name: keyword.other.double
+
+  keyword_char:
+    patterns:
+      - match: "\\b(char)\\b"
+        name: keyword.other.char
+
+  keyword_boolean:
+    patterns:
+      - match: "\\b(boolean)\\b"
+        name: keyword.other.boolean
+
+  keyword_true:
+    patterns:
+      - match: "\\b(true)\\b"
+        name: keyword.other.true
+
+  keyword_false:
+    patterns:
+      - match: "\\b(false)\\b"
+        name: keyword.other.false
+
+  keyword:
+    patterns:
+      - include: "#keyword_abstract"
+      - include: "#keyword_actual"
+      - include: "#keyword_annotation"
+      - include: "#keyword_as"
+      - include: "#keyword_break"
+      - include: "#keyword_by"
+      - include: "#keyword_catch"
+      - include: "#keyword_class"
+      - include: "#keyword_companion"
+      - include: "#keyword_const"
+      - include: "#keyword_constructor"
+      - include: "#keyword_continue"
+      - include: "#keyword_crossinline"
+      - include: "#keyword_data"
+      - include: "#keyword_do"
+      - include: "#keyword_dynamic"
+      - include: "#keyword_else"
+      - include: "#keyword_enum"
+      - include: "#keyword_expect"
+      - include: "#keyword_external"
+      - include: "#keyword_final"
+      - include: "#keyword_static"
+      - include: "#keyword_finally"
+      - include: "#keyword_for"
+      - include: "#keyword_fun"
+      - include: "#keyword_get"
+      - include: "#keyword_if"
+      - include: "#keyword_import"
+      - include: "#keyword_in"
+      - include: "#keyword_infix"
+      - include: "#keyword_init"
+      - include: "#keyword_inline"
+      - include: "#keyword_inner"
+      - include: "#keyword_interface"
+      - include: "#keyword_internal"
+      - include: "#keyword_is"
+      - include: "#keyword_lateinit"
+      - include: "#keyword_noinline"
+      - include: "#keyword_null"
+      - include: "#keyword_object"
+      - include: "#keyword_open"
+      - include: "#keyword_operator"
+      - include: "#keyword_out"
+      - include: "#keyword_override"
+      - include: "#keyword_package"
+      - include: "#keyword_private"
+      - include: "#keyword_protected"
+      - include: "#keyword_public"
+      - include: "#keyword_reified"
+      - include: "#keyword_return"
+      - include: "#keyword_sealed"
+      - include: "#keyword_set"
+      - include: "#keyword_super"
+      - include: "#keyword_suspend"
+      - include: "#keyword_tailrec"
+      - include: "#keyword_this"
+      - include: "#keyword_throw"
+      - include: "#keyword_to"
+      - include: "#keyword_try"
+      - include: "#keyword_typealias"
+      - include: "#keyword_val"
+      - include: "#keyword_var"
+      - include: "#keyword_vararg"
+      - include: "#keyword_when"
+      - include: "#keyword_where"
+      - include: "#keyword_while"
+      - include: "#keyword_byte"
+      - include: "#keyword_short"
+      - include: "#keyword_int"
+      - include: "#keyword_long"
+      - include: "#keyword_ubyte"
+      - include: "#keyword_ushort"
+      - include: "#keyword_uint"
+      - include: "#keyword_ulong"
+      - include: "#keyword_float"
+      - include: "#keyword_double"
+      - include: "#keyword_char"
+      - include: "#keyword_boolean"
+      - include: "#keyword_true"
+      - include: "#keyword_false"
+
+  # Bracket
+  bracket_curly:
+    patterns:
+      - match: "\\{"
+        name: punctuation.section.block.begin
+      - match: "\\}"
+        name: punctuation.section.block.end
+
+  bracket_round:
+    patterns:
+      - match: "\\("
+        name: punctuation.section.parens.begin
+      - match: "\\)"
+        name: punctuation.section.parens.end
+
+  bracket_square:
+    patterns:
+      - match: "\\["
+        name: punctuation.section.brackets.begin
+      - match: "\\]"
+        name: punctuation.section.brackets.end
+
+  bracket:
+    patterns:
+      - include: "#bracket_curly"
+      - include: "#bracket_round"
+      - include: "#bracket_square"
+
+  # Comment
+  comment_block:
+    patterns:
+      - begin: "/\\*"
         beginCaptures:
-          "1":
-            name: keyword.other.import
-        end: "\\n|;"
+          "0":
+            name: punctuation.definition.comment
+        end: "\\*/"
+        endCaptures:
+          "0":
+            name: punctuation.definition.comment
+        name: comment.block
+        patterns:
+          - include: "#comment_block"
+          - include: "#comment_line"
+
+  comment_line:
+    patterns:
+      - match: "//.*"
+        name: comment.line.double-slash
+
+  comment:
+    patterns:
+      - include: "#comment_block"
+      - include: "#comment_line"
+
+  # Number
+  number_float:
+    patterns:
+      - match: "\\b([0-9]+\\.[0-9]+)\\b"
+        name: constant.numeric.float
+
+  number_hex:
+    patterns:
+      - match: "\\b(0x[0-9a-fA-F]+)\\b"
+        name: constant.numeric.hex
+
+  number_integer:
+    patterns:
+      - match: "\\b([0-9]+)\\b"
+        name: constant.numeric.integer
+
+  number_binary:
+    patterns:
+      - match: "\\b(0b[01]+)\\b"
+        name: constant.numeric.binary
+
+  number_octal:
+    patterns:
+      - match: "\\b(0o[0-7]+)\\b"
+        name: constant.numeric.octal
+
+  number:
+    patterns:
+      - include: "#number_float"
+      - include: "#number_hex"
+      - include: "#number_integer"
+      - include: "#number_binary"
+      - include: "#number_octal"
+
+  # String
+  string_escape:
+    patterns:
+      - match: "\\\\."
+        name: constant.character.escape
+
+  string:
+    patterns:
+      - begin: '"'
+        beginCaptures:
+          "0":
+            name: punctuation.definition.string.begin
+        end: '"'
         endCaptures:
           "0":
             name: punctuation.definition.string.end
+        name: string.quoted.double
         patterns:
-          - include: "#identifier-sub"
-  variable-definition:
+          - include: "#string_escape"
+
+  # Operator
+  operator_arithmetic:
     patterns:
-      - match: "\\b(var|val)\\b"
-        name: keyword.other.variable
-      - include: "#identifier-sub"
-      - match: "\\="
+      - match: "\\+"
+        name: keyword.operator.arithmetic
+      - match: "-"
+        name: keyword.operator.arithmetic
+      - match: "\\*"
+        name: keyword.operator.arithmetic
+      - match: "/"
+        name: keyword.operator.arithmetic
+      - match: "%"
+        name: keyword.operator.arithmetic
+
+  operator_assignment:
+    patterns:
+      - match: "="
         name: keyword.operator.assignment
-      - include: "#expression"
+      - match: "\\+="
+        name: keyword.operator.assignment
+      - match: "-="
+        name: keyword.operator.assignment
+      - match: "\\*="
+        name: keyword.operator.assignment
+      - match: "/="
+        name: keyword.operator.assignment
+      - match: "%="
+        name: keyword.operator.assignment
 
-  identifier:
+  operator_bitwise:
     patterns:
-      - match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
-        name: entity.name
+      - match: "&"
+        name: keyword.operator.bitwise
+      - match: "|"
+        name: keyword.operator.bitwise
+      - match: "^"
+        name: keyword.operator.bitwise
+      - match: "~"
+        name: keyword.operator.bitwise
+      - match: "<<"
+        name: keyword.operator.bitwise
+      - match: ">>"
+        name: keyword.operator.bitwise
+      - match: ">>>"
+        name: keyword.operator.bitwise
+      - match: "~&"
+        name: keyword.operator.bitwise
+      - match: "~|"
+        name: keyword.operator.bitwise
+      - match: "~^"
+        name: keyword.operator.bitwise
 
-  variable-declaration-keyword:
+  operator_logical:
     patterns:
-      - match: "\\b(var|val)\\b"
-        name: keyword.other.variable
+      - match: "&&"
+        name: keyword.operator.logical
+      - match: "||"
+        name: keyword.operator.logical
+      - match: "!"
+        name: keyword.operator.logical
+      - match: "^^"
+        name: keyword.operator.logical
 
-  dot:
+  operator_comparison:
+    patterns:
+      - match: "=="
+        name: keyword.operator.comparison
+      - match: "!="
+        name: keyword.operator.comparison
+      - match: "<"
+        name: keyword.operator.comparison
+      - match: ">"
+        name: keyword.operator.comparison
+      - match: "<="
+        name: keyword.operator.comparison
+      - match: ">="
+        name: keyword.operator.comparison
+
+  operator:
+    patterns:
+      - include: "#operator_arithmetic"
+      - include: "#operator_assignment"
+      - include: "#operator_bitwise"
+      - include: "#operator_logical"
+      - include: "#operator_comparison"
+
+  symbol_dot:
     patterns:
       - match: "\\."
         name: punctuation.dot
-  identifier-sub:
+
+  symbol_comma:
     patterns:
-      - include: "#identifier"
-      - include: "#dot"
+      - match: ","
+        name: punctuation.separator.comma
+
+  symbol_colon:
+    patterns:
+      - match: ":"
+        name: punctuation.separator.colon
+
+  symbol_semicolon:
+    patterns:
+      - match: ";"
+        name: punctuation.terminator.statement
+
+  symbol:
+    patterns:
+      - include: "#symbol_dot"
+      - include: "#symbol_comma"
+      - include: "#symbol_colon"
+      - include: "#symbol_semicolon"
+
+  # file:
+  #   patterns:
+  #     - begin: "\\b(file)\\b"
+  #       beginCaptures:
+  #         "1":
+  #           name: keyword.other.file
+  #       end: "\\n"
+  #       endCaptures:
+  #         "0":
+  #           name: punctuation.definition.string.end
+  #       name: meta.file
+  #       patterns:
+  #         - include: "#strings"
+
+  # file-entry:
+  #   patterns: []
+  # file-start-entry:
+  #   patterns:
+  #     - include: "#file-entry"
+  #     - include: "#import-directive"
+  # file-first-entry:
+  #   patterns:
+  #     - include: "#file-start-entry"
+  #     - include: "#package-directive"
+  # package-directive:
+  #   name: keyword.other.package
+  #   patterns:
+  #     - begin: "\\b(package)\\b"
+  #       beginCaptures:
+  #         "1":
+  #           name: keyword.other.package
+  #       end: "\\n|;"
+  #       endCaptures:
+  #         "0":
+  #           name: punctuation.definition.string.end
+  #       patterns:
+  #         - include: "#identifier-sub"
+
+  # import-directive:
+  #   patterns:
+  #     - begin: "\\b(import)\\b"
+  #       beginCaptures:
+  #         "1":
+  #           name: keyword.other.import
+  #       end: "\\n|;"
+  #       endCaptures:
+  #         "0":
+  #           name: punctuation.definition.string.end
+  #       patterns:
+  #         - include: "#identifier-sub"
+  # variable-definition:
+  #   patterns:
+  #     - match: "\\b(var|val)\\b"
+  #       name: keyword.other.variable
+  #     - include: "#identifier-sub"
+  #     - match: "\\="
+  #       name: keyword.operator.assignment
+  #     - include: "#expression"
+
+  # identifier:
+  #   patterns:
+  #     - match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+  #       name: entity.name
+
+  # variable-declaration-keyword:
+  #   patterns:
+  #     - match: "\\b(var|val)\\b"
+  #       name: keyword.other.variable
+
+  # dot:
+  #   patterns:
+  #     - match: "\\."
+  #       name: punctuation.dot
+  # identifier-sub:
+  #   patterns:
+  #     - include: "#identifier"
+  #     - include: "#dot"
 scopeName: source.shake
