@@ -50,7 +50,8 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "build-synthax": "node build-synthaxes.js syntaxes/shake.tmLanguage.yaml syntaxes/shake.tmLanguage.json"
+    "build-synthax": "node build-synthaxes.js syntaxes/shake.tmLanguage.yaml syntaxes/shake.tmLanguage.json",
+    "vsix": "vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
