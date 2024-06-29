@@ -66,5 +66,39 @@
     "typescript": "^5.4.5",
     "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shakelang/vscode-language-support"
+  },
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/shakelang/vscode-language-support/issues"
+  },
+  "homepage": "https://shakelang.com/",
+  "keywords": [
+    "shakelang",
+    "shake",
+    "language",
+    "support",
+    "vscode"
+  ],
+  "author": {
+    "name": "Shake Programming Language",
+    "email": "contact@shakelang.com",
+    "url": "https://shakelang.com/"
+  },
+  "contributors": [
+    {
+      "name": "Shake Programming Language",
+      "email": "contact@shakelang.com",
+      "url": "https://shakelang.com/"
+    },
+    {
+      "name": "Nicolas Schmidt",
+      "email": "nicolas.schmidt@shakelang.com",
+      "url": "https://github.com/nsc-de"
+    }
+  ]
 }
